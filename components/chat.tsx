@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type { Attachment, Message } from 'ai';
-import { useChat } from '@ai-sdk/react';
-import { useState } from 'react';
-import useSWR, { useSWRConfig } from 'swr';
-import { ChatHeader } from '@/components/chat-header';
-import type { Vote } from '@/lib/db/schema';
-import { fetcher, generateUUID } from '@/lib/utils';
-import { Artifact } from './artifact';
-import { MultimodalInput } from './multimodal-input';
-import { Messages } from './messages';
-import { VisibilityType } from './visibility-selector';
-import { useArtifactSelector } from '@/hooks/use-artifact';
-import { toast } from 'sonner';
+import type { Attachment, Message } from "ai";
+import { useChat } from "@ai-sdk/react";
+import { useState } from "react";
+import useSWR, { useSWRConfig } from "swr";
+import { ChatHeader } from "@/components/chat-header";
+import type { Vote } from "@/lib/db/schema";
+import { fetcher, generateUUID } from "@/lib/utils";
+import { Artifact } from "./artifact";
+import { MultimodalInput } from "./multimodal-input";
+import { Messages } from "./messages";
+import { VisibilityType } from "./visibility-selector";
+import { useArtifactSelector } from "@/hooks/use-artifact";
+import { toast } from "sonner";
 
 export function Chat({
   id,
@@ -47,16 +47,20 @@ export function Chat({
     sendExtraMessageFields: true,
     generateId: generateUUID,
     onFinish: () => {
-      mutate('/api/history');
+      mutate("/api/history");
     },
-    onError: () => {
-      toast.error('An error occured, please try again!');
+    onError: (error: any) => {
+      const errorMessage =
+        error?.data?.error?.message ||
+        error?.message ||
+        "An error occured, please try again!";
+      toast.error(errorMessage);
     },
   });
 
   const { data: votes } = useSWR<Array<Vote>>(
     `/api/vote?chatId=${id}`,
-    fetcher,
+    fetcher
   );
 
   const [attachments, setAttachments] = useState<Array<Attachment>>([]);
