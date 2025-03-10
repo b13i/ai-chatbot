@@ -56,6 +56,15 @@ export const chatModels: Array<ChatModel> = [
     creditsPerMessage: 0,
     isPaid: false,
   },
+  {
+    id: "google-gemini-15-flash-8b",
+    name: "Gemini 1.5 Flash 8B",
+    description: "Fast, efficient Google model for high-volume tasks",
+    provider: "google",
+    modelId: "gemini-1.5-flash-8b",
+    creditsPerMessage: 0,
+    isPaid: false,
+  },
 
   // OpenAI - Paid models
   {
@@ -108,21 +117,39 @@ export const chatModels: Array<ChatModel> = [
 
   // Google models
   {
-    id: "google-gemini-pro",
-    name: "Gemini Pro",
-    description: "Google's advanced multimodal model",
+    id: "google-gemini-20-flash",
+    name: "Gemini 2.0 Flash",
+    description: "Google's newest multimodal model with next-gen features",
     provider: "google",
-    modelId: "gemini-pro",
+    modelId: "gemini-2.0-flash",
+    creditsPerMessage: 3,
+    isPaid: true,
+  },
+  {
+    id: "google-gemini-20-flash-lite",
+    name: "Gemini 2.0 Flash-Lite",
+    description: "Cost-efficient version optimized for low latency",
+    provider: "google",
+    modelId: "gemini-2.0-flash-lite",
     creditsPerMessage: 2,
     isPaid: true,
   },
   {
-    id: "google-gemini-1.5-pro",
-    name: "Gemini 1.5 Pro",
-    description: "Google's latest model with improved capabilities",
+    id: "google-gemini-15-flash",
+    name: "Gemini 1.5 Flash",
+    description: "Balanced multimodal model for most tasks",
     provider: "google",
-    modelId: "gemini-1.5-pro-latest",
-    creditsPerMessage: 3,
+    modelId: "gemini-1.5-flash",
+    creditsPerMessage: 1,
+    isPaid: true,
+  },
+  {
+    id: "google-gemini-15-pro",
+    name: "Gemini 1.5 Pro",
+    description: "Complex reasoning with 1M context window",
+    provider: "google",
+    modelId: "gemini-1.5-pro",
+    creditsPerMessage: 2,
     isPaid: true,
   },
 
@@ -269,6 +296,8 @@ export const REASONING_MODELS: Array<(typeof chatModels)[number]["id"]> = [
   "groq-llama3-70b",
   "cohere-command-r-plus",
   "amazon-claude-3-sonnet",
+  "google-gemini-20-flash",
+  "google-gemini-15-pro",
 ];
 
 export const DEFAULT_CHAT_MODEL: string = chatModels[0].id;

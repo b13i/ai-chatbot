@@ -118,7 +118,7 @@ export function ModelSelector({
 
         {/* Premium models section with provider submenus */}
         <div className="px-2 py-1 text-xs font-medium text-muted-foreground flex items-center gap-1">
-          <CreditCardIcon className="size-3" />
+          <CreditCardIcon size={16} />
           Premium Models
         </div>
 
