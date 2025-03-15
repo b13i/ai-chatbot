@@ -6,104 +6,21 @@ import {
 
 // Provider SDKs - Core providers we have dependencies for
 import { openai } from "@ai-sdk/openai";
+import { anthropic } from "@ai-sdk/anthropic";
 import { fireworks } from "@ai-sdk/fireworks";
+import { google } from "@ai-sdk/google";
 
 // Import the necessary providers based on the .env configuration
 // These imports are marked with try/catch so the app can run even if some
 // provider packages aren't installed yet
 const providerSDKs: Record<string, any> = {
   openai,
+  anthropic,
   fireworks,
+  google,
 };
 
 // Dynamically load other providers if their packages are installed
-try {
-  providerSDKs.anthropic = require("@ai-sdk/anthropic").anthropic;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.mistral = require("@ai-sdk/mistralai").mistralai;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.google =
-    require("@ai-sdk/google-generative-ai").googleGenerativeAI;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.cohere = require("@ai-sdk/cohere").cohere;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.groq = require("@ai-sdk/groq").groq;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.together = require("@ai-sdk/together-ai").togetherai;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.perplexity = require("@ai-sdk/perplexity").perplexity;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs["azure-openai"] = require("@ai-sdk/azure-openai").azureOpenAI;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs["amazon-bedrock"] =
-    require("@ai-sdk/amazon-bedrock").amazonBedrock;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.replicate = require("@ai-sdk/replicate").replicate;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.deepinfra = require("@ai-sdk/deepinfra").deepinfra;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.deepseek = require("@ai-sdk/deepseek").deepseek;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.cerebras = require("@ai-sdk/cerebras").cerebras;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.xai = require("@ai-sdk/xai").xai;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs["google-vertex"] = require("@ai-sdk/google-vertex").googleVertex;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.luma = require("@ai-sdk/luma").luma;
-} catch (e) {
-  /* Not installed */
-}
-try {
-  providerSDKs.fal = require("@ai-sdk/fal").fal;
-} catch (e) {
-  /* Not installed */
-}
 
 import { isTestEnvironment } from "../constants";
 import { artifactModel, chatModel, titleModel } from "./models.test";
